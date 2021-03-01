@@ -1,10 +1,10 @@
 //
-// Created by sun on 2021/2/24.
+// Created by sun on 2021/3/1.
 //
 
-#include "unitree_driver/unitree_wrapper.h"
+#include "unitree_driver/A1_wrapper.h"
 
-void udpWrapper::walkCmd(float forwardSpeed, float sideSpeed, float rotateSpeed){
+void A1Wrapper::walkCmd(float forwardSpeed, float sideSpeed, float rotateSpeed){
 
     UNITREE_LEGGED_SDK::HighState current_state;
     UNITREE_LEGGED_SDK::HighCmd high_cmd = {0};
@@ -41,12 +41,10 @@ void udpWrapper::walkCmd(float forwardSpeed, float sideSpeed, float rotateSpeed)
     }
 }
 
-void udpWrapper::stop() {
+void A1Wrapper::stop() {
     UNITREE_LEGGED_SDK::HighCmd stop_cmd = {0};
     stop_cmd.mode = 1;
     udp.SetSend(stop_cmd);
     sleep(10);
 }
-
-
 

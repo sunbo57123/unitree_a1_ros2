@@ -4,10 +4,9 @@
 
 #include "unitree_driver/A1_ros.h"
 
-int A1ROS::node_init(){
-    rclcpp::init(0, nullptr);
+int A1ROS::node_init(int argc, char * argv[]){
+    rclcpp::init(argc, argv);
     UNITREE_LEGGED_SDK::InitEnvironment();
-
     auto A1_node = std::make_shared<rclcpp::Node>(this->node_name);
 
     A1_node->create_subscription<geometry_msgs::msg::Twist>(
@@ -17,8 +16,9 @@ int A1ROS::node_init(){
                       this,
                       std::placeholders::_1)
     );
-    float dt = 0.002f;
+//    A1_node->create_subscription<...>();
 
+    float dt = 0.002f;
     UNITREE_LEGGED_SDK::LoopFunc loop_udpRecv("udp_recv", dt, 3, boost::bind(&A1Wrapper::UDPRecv, &wrapper));
     UNITREE_LEGGED_SDK::LoopFunc loop_udpSend("udp_send", dt, 3, boost::bind(&A1Wrapper::UDPSend, &wrapper));
     loop_udpRecv.start();

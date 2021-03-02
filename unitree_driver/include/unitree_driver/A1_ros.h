@@ -17,7 +17,7 @@ public:
         this->node_name = node_name;
     };
 
-    int node_init();
+    int node_init(int argc, char * argv[]);
     void walkCallback(const geometry_msgs::msg::Twist::SharedPtr msg);
     A1Wrapper wrapper;
 

@@ -43,3 +43,16 @@ void A1Wrapper::stop() {
     sleep(10);
 }
 
+void A1Wrapper::setVel(float forward_speed) {
+    UNITREE_LEGGED_SDK::HighCmd foward_cmd = {0};
+    foward_cmd.forwardSpeed = forward_speed;
+    udp.SetSend(foward_cmd);
+    sleep(10);
+}
+
+void A1Wrapper::setWalkMode(){
+    UNITREE_LEGGED_SDK::HighCmd walk_mode = {0};
+    walk_mode.mode = 1;
+    udp.SetSend(walk_mode);
+    sleep(10);
+}

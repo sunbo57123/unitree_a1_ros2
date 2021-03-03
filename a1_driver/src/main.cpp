@@ -1,7 +1,7 @@
 //
 // Created by sun on 2021/3/1.
 //
-// 1. args parser
+
 #include "unitree_a1_ros2/A1_ros.h"
 #include "unitree_a1_ros2/A1_wrapper.h"
 

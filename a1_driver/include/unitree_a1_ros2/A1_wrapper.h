@@ -23,6 +23,8 @@ public:
     }
     void walkCmd(float forwardSpeed, float sideSpeed, float rotateSpeed);
     void stop();
+    void setVel(float forward_speed);
+    void setWalkMode();
     UNITREE_LEGGED_SDK::UDP udp;
     UNITREE_LEGGED_SDK::Safety safety;
     UNITREE_LEGGED_SDK::HighCmd cmd;

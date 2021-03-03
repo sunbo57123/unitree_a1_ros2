@@ -2,7 +2,7 @@
 // Created by sun on 2021/3/1.
 //
 
-#include "unitree_driver/A1_ros.h"
+#include "unitree_a1_ros2/A1_ros.h"
 
 int A1ROS::node_init(int argc, char *argv[]){
     auto A1_node = rclcpp::Node::make_shared(this->node_name);

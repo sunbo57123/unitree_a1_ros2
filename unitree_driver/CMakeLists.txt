@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(unitree_driver)
+project(unitree_a1_ros2)
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)

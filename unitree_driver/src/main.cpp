@@ -1,17 +1,15 @@
 //
 // Created by sun on 2021/3/1.
 //
-
+// 1. args parser
 #include "unitree_driver/A1_ros.h"
 #include "unitree_driver/A1_wrapper.h"
-static void show_usage(std::string name){
-    std::cerr << "running ros2 run unitree_driver a1_main --node-name A1_node" << std::endl;
-}
-int main(int argc, char* argv[]){
 
+int main(int argc, char* argv[]){
+    rclcpp::init(argc, argv);
     std::string node_name = "A1_node";
-    if (argc < 3){
-        show_usage(argv[0]);
+    if (argc < 3 ){
+        std::cerr << "running ros2 run unitree_driver a1_main --node-name A1_node" << std::endl;
     }
     for (int i =1; i < argc ; ++i) {
         std::string arg = argv[i];

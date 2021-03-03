@@ -13,8 +13,6 @@
 class A1Wrapper{
 public:
     A1Wrapper():udp(UNITREE_LEGGED_SDK::HIGHLEVEL), safety(UNITREE_LEGGED_SDK::LeggedType::A1), cmd({0}){
-    }
-    void UDPInit(){
         udp.InitCmdData(cmd);
     }
     void UDPRecv(){

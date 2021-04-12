@@ -6,6 +6,11 @@ if (NOT CMAKE_CXX_STANDARD)
     set(CMAKE_CXX_STANDARD 14)
 endif ()
 
+#-----------------------delete------------------------------
+set(FastRTPS_INCLUDE_DIR /opt/ros/foxy/include)
+set(FastRTPS_LIBRARY_RELEASE /opt/ros/foxy/lib/libfastrtps.so)
+#-----------------------delete------------------------------
+
 if (CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_compile_options(-Wall -Wextra -Wpedantic)
 endif ()
@@ -13,10 +18,14 @@ endif ()
 find_package(ament_cmake REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(std_srvs REQUIRED)
+find_package(tf2 REQUIRED)
 
 set(dependencies
         rclcpp
         geometry_msgs
+        std_srvs
+        tf2
         )
 
 include_directories(
@@ -48,5 +57,12 @@ install(TARGETS
         DESTINATION lib/${PROJECT_NAME}
         )
 
-ament_package()
+if(BUILD_TESTING)
+    find_package(ament_lint_auto REQUIRED)
+    ament_lint_auto_find_test_dependencies()
 
+#    ament_cpplint()
+endif()
+
+
+ament_package()

@@ -11,29 +11,34 @@
 
 class A1Wrapper {
 public:
-    A1Wrapper() : udp(UNITREE_LEGGED_SDK::HIGHLEVEL), safety(UNITREE_LEGGED_SDK::LeggedType::A1), cmd({0}) {
-        udp.InitCmdData(cmd);
-    }
+  A1Wrapper() : udp(UNITREE_LEGGED_SDK::HIGHLEVEL), safety(UNITREE_LEGGED_SDK::LeggedType::A1), cmd(
+      {}) {
+    udp.InitCmdData(cmd);
+  }
 
-    void UDPRecv() {
-        udp.Recv();
-    }
+  void UDPRecv()
+  {
+    udp.Recv();
+  }
 
-    void UDPSend() {
-        udp.Send();
-    }
+  void UDPSend()
+  {
+    udp.Send();
+  }
 
-    void walkCmd(float forwardSpeed, float sideSpeed, float rotateSpeed);
+  void walkCmd(float forwardSpeed, float sideSpeed, float rotateSpeed);
 
-    void stop();
+  void stop();
 
-    void setVel(float forward_speed);
+  void setVel(float forward_speed);
 
-    void setWalkMode();
+  void bodyPose(double roll, double pitch, double yaw);
 
-    UNITREE_LEGGED_SDK::UDP udp;
-    UNITREE_LEGGED_SDK::Safety safety;
-    UNITREE_LEGGED_SDK::HighCmd cmd;
+  void setWalkMode();
+
+  UNITREE_LEGGED_SDK::UDP udp;
+  UNITREE_LEGGED_SDK::Safety safety;
+  UNITREE_LEGGED_SDK::HighCmd cmd;
 };
 
 #endif //UNITREE_DRIVER_A1_WRAPPER_H
